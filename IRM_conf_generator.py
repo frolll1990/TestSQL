@@ -2,21 +2,20 @@
 ####v001
 
 print("\nWelcome to IRM config generator!\n")
-f = open("file_with_rule.txt", "w")
+#f = open("file_with_rule.txt", "w")
 
 
-exc = input("Execution?\n Market = 1\n Instant = 2\n Instant+Market = 3\n")
+exc = input(" Execution?\n Market = 1\n Instant = 2\n Instant+Market = 3\n")
 
 if exc == '1':
     exc = 'market;'
-    print(exc)
 elif exc == '2':
     exc = str('instant;')
 else:
     exc = str('market,instant;')
 
 
-symb = input("Symbol?\n EURUSD = 1\n GBPUSD = 2\n or type symbolname \n")
+symb = input(" Symbol?\n EURUSD = 1\n GBPUSD = 2\n or type symbolname \n")
 
 if symb == '1':
     symb = str('Forex\EURUSD;')
@@ -26,7 +25,7 @@ else:
     symb = str(symb) + ";"
 
 
-gr = input("Groups?\n * = 1\n or type groupname \n")
+gr = input(" Groups?\n * = 1\n or type groupname \n")
 
 if gr == '1':
     gr = str('*;')
@@ -34,11 +33,11 @@ else:
     gr = str(gr) + ";"
 
 
-lgns = input("Logins?\n * = 1\n or type logins\n")
+lgns = input(" Logins?\n * = 1\n or type logins\n")
 
 
 if lgns == '1' and gr == '*;':    
-	lgns = str(';')
+    lgns = str(';')
 elif lgns == '1':
     lgns = str('*;')
 else:
@@ -46,7 +45,7 @@ else:
     
 #print("\n\n" + exc + symb + gr + lgns + vol + type + "\n\n")
 
-vol = input("Add exact volume or volume - range\n")+";"
+vol = input(" Add exact volume or volume - range\n")+";"
 
 type = input("\n Type?\n open,close = 1\n limit,stop = 2\n tp,sl,stopout = 3 \n all = 0\n")
 if type == '1':
@@ -94,7 +93,9 @@ ovm = input("\n Open Volume Multiplier?\n\n :")
 
 
 rule = exc + symb + gr + lgns + vol + type + delay + po + prdiv + muv + ovm
+
 print("\n\n" + rule + "\n\n")
-f = open("file_with_rule.txt", "w")
-f.write(rule)
+
+f = open("file_with_rule.txt", "a+")
+f.write(rule + "\n")
 f.close
